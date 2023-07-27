@@ -17,10 +17,18 @@ const serpmeKahvalti = {
 	Örnek MenuElemaniOlustur('Cheeseburger', 8, 'Burgerler') şunu döndürmeli: {isim: 'Cheeseburger', fiyat: 8, kategori: 'Burgerler'}
 */
 
-function MenuElemaniOlustur(/*Kodlar buraya*/) {
-  /*Kodlar buraya*/
-}
+function MenuElemaniOlustur(ismi, fiyati, kategorisi) {
+  const menu = {
+    isim: ismi,
+    fiyat: fiyati,
+    kategori: kategorisi,
+  };
 
+  for (let key in menu) {
+    return key + key[menu];
+  }
+}
+console.log(MenuElemaniOlustur("Cheeseburger", "8", "Burgerler"));
 /*  Görev 1b (otomatik test yok): 
 	Fonksiyonu çağırın!
 	Aşağıdakileri uygulayarak MenuElemaniOlustur fonksiyonunuzu test edin:
@@ -106,12 +114,16 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
+console.log(degerlendirmeler[5].geribildirim);
 
 /*  Görev 4 (ototest yok):  
 	Reyna'nın geribildirimi girilmemiş! Aşağıdakileri uygulayın: (fonksiyona gerek yok) 
 	1. Bu geribildirimi Reyna'nın değerlendirmesine ekleyin - "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
+degerlendirmeler[7].geribildirim =
+  "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım";
+console.log(degerlendirmeler[7].geribildirim);
 
 /*  Görev 5: 
 	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
@@ -124,9 +136,7 @@ const degerlendirmeler = [
 	4. Güncellenmiş diziyi döndürecek
 */
 
-function DegerlendirmeEkle(/*Kodlar buraya */) {
-  /*Kodlar buraya */
-}
+function DegerlendirmeEkle(degerlendirmeler, isim, puan, geribildirim) {}
 
 /*  Görev 6: 
 	Dizideki değerlendirmelerin anahtarına(key,index) bağlı olarak bir değerlendirme döndüren bir fonksiyon yazın
@@ -138,9 +148,23 @@ function DegerlendirmeEkle(/*Kodlar buraya */) {
 	Örnek: AnahtardanDegerlendirmeAl(degerlendirmeler,0) şunu döndürmeli: "Nalan isimli kişi 5 puan verdi ve şunları yazdı: Mükemmel atmosfer ve mükemmel vegan seçenekleri!"
 */
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-  /*Kodlar buraya*/
+function AnahtardanDegerlendirmeAl(degerlendirmeler, index) {
+  degerlendirmeler: [
+    {
+      isim: "nalan",
+      puan: 5,
+      geribildirim: "Mükemmel atmosfer ve mükemmel vegan seçenekleri!",
+    },
+  ];
+  return (
+    degerlendirmeler[index].isim +
+    " isimli kişi " +
+    degerlendirmeler[index].puan +
+    " puan verdi ve şunları yazdı: " +
+    degerlendirmeler[index].geribildirim
+  );
 }
+console.log(AnahtardanDegerlendirmeAl(degerlendirmeler, 0));
 
 /*  Görev 7:  
 	Diziden en son değerlendirmeyi döndüren adı `SonDegerlendirmeyiAl` olan bir fonksiyon yazın 
