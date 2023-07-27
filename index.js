@@ -24,11 +24,9 @@ function MenuElemaniOlustur(ismi, fiyati, kategorisi) {
     kategori: kategorisi,
   };
 
-  for (let key in menu) {
-    return key + key[menu];
-  }
+  return menu;
 }
-console.log(MenuElemaniOlustur("Cheeseburger", "8", "Burgerler"));
+console.log(MenuElemaniOlustur("Cheeseburger", 4, "Burgerler"));
 /*  Görev 1b (otomatik test yok): 
 	Fonksiyonu çağırın!
 	Aşağıdakileri uygulayarak MenuElemaniOlustur fonksiyonunuzu test edin:
@@ -38,6 +36,8 @@ console.log(MenuElemaniOlustur("Cheeseburger", "8", "Burgerler"));
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
+const menu = MenuElemaniOlustur("Karışık Pizza", 5, "Pizza");
+console.log(menu);
 
 /* Görev 2: 
 	Özel bir öğle yemeği yiyorsun! Öğretmen ve öğrencilere %25, diğer kişilere %10 indirim var. Aşağıdaki burger nesnesine, indirimi fiyatı otomatik olarak hesaplayan bir metot ekleyin.
@@ -58,11 +58,20 @@ const burger = {
   indirim: function (meslek) {
     if (meslek == "öğretmen" || meslek == "öğrenci") {
       return this.fiyat - this.fiyat * 0.25;
-    } else if (meslek == "diğer") {
+    } else {
       return this.fiyat - this.fiyat * 0.1;
     }
   },
 };
+
+/*
+burger.indirim = (meslek) => {
+	if meslek.toLowerCase() === "öğretmen" || meslek.toLowerCase() === "öğrenci"){
+		return this.fiyat şeklinde de yapılır 
+	}
+}
+
+*/
 console.log(burger.indirim("öğretmen"));
 
 ///////////////Değerlendirmeler (MVP)///////////////////
@@ -136,7 +145,22 @@ console.log(degerlendirmeler[7].geribildirim);
 	4. Güncellenmiş diziyi döndürecek
 */
 
-function DegerlendirmeEkle(degerlendirmeler, isim, puan, geribildirim) {}
+function DegerlendirmeEkle(dizi, ismi, puani, geribildirimi) {
+  const yeniekle = {
+    isim: ismi,
+    puan: puani,
+    geribildirim: geribildirimi,
+  };
+  dizi.push(yeniekle);
+  return dizi;
+}
+const result = DegerlendirmeEkle(
+  degerlendirmeler,
+  "Hurşit",
+  2,
+  "Boktan yemekler!"
+);
+console.log(result);
 
 /*  Görev 6: 
 	Dizideki değerlendirmelerin anahtarına(key,index) bağlı olarak bir değerlendirme döndüren bir fonksiyon yazın
@@ -148,7 +172,7 @@ function DegerlendirmeEkle(degerlendirmeler, isim, puan, geribildirim) {}
 	Örnek: AnahtardanDegerlendirmeAl(degerlendirmeler,0) şunu döndürmeli: "Nalan isimli kişi 5 puan verdi ve şunları yazdı: Mükemmel atmosfer ve mükemmel vegan seçenekleri!"
 */
 
-function AnahtardanDegerlendirmeAl(degerlendirmeler, index) {
+function AnahtardanDegerlendirmeAl(dizi, index) {
   degerlendirmeler: [
     {
       isim: "nalan",
@@ -157,11 +181,11 @@ function AnahtardanDegerlendirmeAl(degerlendirmeler, index) {
     },
   ];
   return (
-    degerlendirmeler[index].isim +
+    dizi[index].isim +
     " isimli kişi " +
-    degerlendirmeler[index].puan +
+    dizi[index].puan +
     " puan verdi ve şunları yazdı: " +
-    degerlendirmeler[index].geribildirim
+    dizi[index].geribildirim
   );
 }
 console.log(AnahtardanDegerlendirmeAl(degerlendirmeler, 0));
@@ -178,8 +202,15 @@ console.log(AnahtardanDegerlendirmeAl(degerlendirmeler, 0));
 	Not: Eğer 4. görevi başarıyla yaptıysanız kişinin geribildirimi boş görünmemeli
 */
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-  /*Kodlar buraya*/
+function SonDegerlendirmeyiAl(dizi) {
+  let yorum = dizi[dizi.length - 1];
+  let metin =
+    yorum.isim +
+    " isimli kişi " +
+    yorum.puan +
+    " puan verdi ve şunları yazdı: " +
+    yorum.geribildirim;
+  return metin;
 }
 
 /////////////// BONUS  GÖRVLER////////////////////
